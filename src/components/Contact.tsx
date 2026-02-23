@@ -112,11 +112,6 @@ export const Contact: React.FC = () => {
                 <p className="text-gray-400 mb-8 max-w-sm text-base md:text-lg">
                   Ďakujeme za váš záujem. Náš tím prijme vašu požiadavku a ozveme sa vám čo najskôr.
                 </p>
-                <div className="p-4 bg-white/5 rounded-lg mb-6 max-w-sm border border-white/5">
-                    <p className="text-xs text-gray-500">
-                        Poznámka: Ak ste nás kontaktovali prvýkrát, skontrolujte si prosím priečinok <strong>SPAM</strong> pre potvrdzovací email.
-                    </p>
-                </div>
                 <button 
                   onClick={resetForm}
                   className="px-6 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 hover:border-nexel-primary/50 transition-all flex items-center gap-2 group"

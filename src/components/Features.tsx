@@ -9,7 +9,7 @@ export const Features: React.FC = () => {
         <div className="max-w-5xl mx-auto text-center mb-8 md:mb-12">
            {/* Restored Original Headings */}
            <h2 className="text-nexel-accent font-medium tracking-widest uppercase mb-3 md:mb-4 text-xs md:text-base">
-             Naše riešenia
+             O nás
            </h2>
            <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-8 leading-tight">
              Technické riešenia, ktoré <br className="hidden md:block"/> fungujú v praxi
