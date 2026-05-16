@@ -46,14 +46,17 @@ export const Navbar: React.FC = () => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
 
-    if (link.href.startsWith('#')) {
+    // Ak pageHref je anchor na homepage (napr. /#sluzby), scrolluj
+    if (link.pageHref.startsWith('/#')) {
+      const sectionId = link.pageHref.replace('/#', '');
       if (isHomePage) {
-        scrollToSection(link.href.replace('#', ''));
+        scrollToSection(sectionId);
       } else {
         navigate('/');
-        setTimeout(() => scrollToSection(link.href.replace('#', '')), 300);
+        setTimeout(() => scrollToSection(sectionId), 300);
       }
     } else {
+      // Samostatná stránka — naviguj
       navigate(link.pageHref);
     }
   };
