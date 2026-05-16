@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { MapPin, ArrowUpRight, Calendar, X, Check, Building2, ChevronLeft, ChevronRight, Maximize2, Loader2 } from 'lucide-react';
+import { MapPin, ArrowUpRight, X, Check, Building2, ChevronLeft, ChevronRight, Maximize2, Loader2 } from 'lucide-react';
 
 // Helper for image optimization
 const getOptimizedImage = (url: string, width: number) => {
@@ -591,11 +591,6 @@ export const References: React.FC = () => {
                                     <MapPin size={10} />
                                     <span className="truncate max-w-[80px] md:max-w-none">{project.location}</span>
                                 </div>
-                                <span className="w-0.5 h-0.5 md:w-1 md:h-1 bg-gray-700 rounded-full"></span>
-                                <div className="flex items-center gap-1">
-                                    <Calendar size={10} />
-                                    <span>{project.year}</span>
-                                </div>
                             </div>
 
                             <p className="text-gray-400 text-xs md:text-sm leading-relaxed line-clamp-3 mb-4 flex-grow">
@@ -702,8 +697,6 @@ export const References: React.FC = () => {
                     <div className="lg:hidden mb-6">
                          <div className="flex items-center gap-2 mb-3 text-xs md:text-sm text-gray-500">
                              <span className="flex items-center gap-1"><MapPin size={12}/> {selectedProject.location}</span>
-                             <span>•</span>
-                             <span className="flex items-center gap-1"><Calendar size={12}/> {selectedProject.year}</span>
                          </div>
                         <p className="text-gray-300 leading-relaxed text-sm md:text-base">
                             {selectedProject.details.about}
