@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 
 const navLinks = [
-  { label: 'Naše riešenia', href: '#sluzby', active: true },
-  { label: 'O nás', href: '#o-nas', active: false },
-  { label: 'Projekty', href: '#projekty', active: false },
-  { label: 'Kontakt', href: '#kontakt', active: false },
+  { label: 'Naše riešenia', href: '#sluzby', pageHref: '/#sluzby' },
+  { label: 'O nás', href: '#o-nas', pageHref: '/o-nas' },
+  { label: 'Projekty', href: '#projekty', pageHref: '/referencie' },
+  { label: 'Kontakt', href: '#kontakt', pageHref: '/kontakt' },
 ];
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +25,6 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -30,28 +33,38 @@ export const Navbar: React.FC = () => {
     }
   }, [isMobileMenuOpen]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 80; // Adjusted for mobile
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const headerOffset = 80;
+      const offsetPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
-    
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof navLinks[0]) => {
+    e.preventDefault();
     setIsMobileMenuOpen(false);
+
+    if (link.href.startsWith('#')) {
+      if (isHomePage) {
+        scrollToSection(link.href.replace('#', ''));
+      } else {
+        navigate('/');
+        setTimeout(() => scrollToSection(link.href.replace('#', '')), 300);
+      }
+    } else {
+      navigate(link.pageHref);
+    }
   };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
     setIsMobileMenuOpen(false);
   };
 
@@ -82,8 +95,8 @@ export const Navbar: React.FC = () => {
                 {navLinks.map((link) => (
                   <a
                     key={link.label}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    href={link.pageHref}
+                    onClick={(e) => handleNavClick(e, link)}
                     className="text-xs lg:text-[15px] relative py-2 transition-colors duration-300 font-medium tracking-wide cursor-pointer text-gray-200 hover:text-white group"
                   >
                     {link.label}
@@ -126,8 +139,8 @@ export const Navbar: React.FC = () => {
                {navLinks.map((link) => (
                   <a
                     key={link.label}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    href={link.pageHref}
+                    onClick={(e) => handleNavClick(e, link)}
                     className="text-xl font-medium text-white hover:text-nexel-primary transition-colors"
                   >
                     {link.label}

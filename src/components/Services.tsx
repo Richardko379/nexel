@@ -1,65 +1,7 @@
 import React from 'react';
-import { 
-  Zap, 
-  Network, 
-  CheckCircle2, 
-  ArrowRight, 
-  ShieldCheck
-} from 'lucide-react';
-
-const services = [
-  {
-    id: 1,
-    title: 'Elektroinštalácie',
-    subtitle: 'Silnoprúd',
-    icon: Zap,
-    image: 'https://res.cloudinary.com/duvaxlkw3/image/upload/v1770404782/elektro_xmazlm.png', 
-    description: `Spoľahlivý základ každej budovy.
-
-    Elektroinštalácia je základom bezpečnej a funkčnej budovy – od rodinných domov až po priemyselné objekty. V Nexel Systems sa zameriavame na presnú realizáciu elektroinštalácií podľa projektovej dokumentácie alebo technického zadania.
-
-    Realizujeme silnoprúdové rozvody, rozvádzače a prípravu elektroinštalácie pre ďalšie technológie tak, aby bol systém pripravený na budúce rozšírenie a bezproblémovú prevádzku.`,
-    features: [
-      'Priemyselné a domové inštalácie',
-      'Silnoprúdové rozvody a rozvádzače',
-      'Prípravu pre technológie'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Dátové siete',
-    subtitle: 'Slaboprúd',
-    icon: Network,
-    image: 'https://res.cloudinary.com/duvaxlkw3/image/upload/v1770404592/datove_rmmqca.png', 
-    description: `Stabilná infraštruktúra pre dáta a komunikáciu.
-
-    V dnešnej digitálnej dobe je spoľahlivá dátová sieť rovnako dôležitá ako elektrina. V Nexel Systems realizujeme dátové siete pre bytové, komerčné aj priemyselné objekty s dôrazom na stabilitu a prehľadnosť.
-
-    Realizujeme štruktúrovanú kabeláž a sieťové rozvody podľa projektovej dokumentácie. Pre väčšie objekty inštalujeme optické trasy, rackové riešenia a sieťové prvky tak, aby bola sieť pripravená na vysokú záťaž.`,
-    features: [
-      'Štruktúrovaná kabeláž (metal/optika)',
-      'Serverovne a rackové systémy',
-      'Merania a dokumentáciu'
-    ]
-  },
-  {
-    id: 3,
-    title: 'Zabezpečenie & Smart',
-    subtitle: 'Bezpečnosť & Automatizácia',
-    icon: ShieldCheck,
-    image: 'https://res.cloudinary.com/duvaxlkw3/image/upload/v1770404782/zabezpecovacky_anvxhk.png', 
-    description: `Bezpečnosť, ktorú vidíte. Komfort, ktorý cítite.
-
-    Moderná budova sa o vás nemá len „starať“, ale má fungovať spoľahlivo. Navrhujeme a inštalujeme riešenia, ktoré chránia majetok a zjednodušujú každodenné fungovanie.
-
-    Integrujeme kamerové systémy s vysokým rozlíšením a realizujeme aj aktívne zabezpečenie – elektronické zabezpečovacie systémy, prístupové systémy a videovrátniky.`,
-    features: [
-      'Kamerové a zabezpečovacie systémy',
-      'Prístupové systémy a videovrátniky',
-      'Inteligentné riadenie budov'
-    ]
-  }
-];
+import { Link } from 'react-router-dom';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { SERVICES } from '../data/services';
 
 export const Services: React.FC = () => {
   const scrollToContact = () => {
@@ -96,7 +38,7 @@ export const Services: React.FC = () => {
 
         {/* Services List - Gap optimized for tablet (md:gap-16) vs desktop (lg:gap-32) */}
         <div className="flex flex-col gap-16 md:gap-20 lg:gap-32">
-          {services.map((service, index) => (
+          {SERVICES.map((service, index) => (
             <div 
               key={service.id} 
               className={`flex flex-col lg:flex-row items-center gap-8 md:gap-10 lg:gap-20 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
@@ -152,14 +94,22 @@ export const Services: React.FC = () => {
                   ))}
                 </div>
 
-                {/* CTA Button */}
-                <button 
-                  onClick={scrollToContact}
-                  className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-nexel-primary/50 rounded-lg text-white font-medium transition-all duration-300 active:scale-95 touch-manipulation"
-                >
-                  <span>Konzultovať riešenie</span>
-                  <ArrowRight size={18} className="text-nexel-primary group-hover:translate-x-1 transition-transform" />
-                </button>
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={scrollToContact}
+                    className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-nexel-primary/50 rounded-lg text-white font-medium transition-all duration-300 active:scale-95 touch-manipulation"
+                  >
+                    <span>Konzultovať riešenie</span>
+                    <ArrowRight size={18} className="text-nexel-primary group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <Link
+                    to={`/sluzby/${service.slug}`}
+                    className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-6 py-3.5 border border-nexel-primary/30 hover:border-nexel-primary/70 rounded-lg text-nexel-primary hover:text-white font-medium transition-all duration-300 text-sm"
+                  >
+                    Viac informácií
+                  </Link>
+                </div>
               </div>
 
             </div>

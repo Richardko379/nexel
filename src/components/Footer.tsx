@@ -1,24 +1,26 @@
 import React from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { Facebook, Instagram, ArrowUp } from "lucide-react";
 
 export const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+    if (location.pathname === "/") {
+      const element = document.getElementById(id);
+      if (element) {
+        const offsetPosition = element.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      }
+    } else {
+      navigate(`/#${id}`);
     }
   };
 
@@ -26,10 +28,12 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#020305] border-t border-white/5 py-8 md:py-12 relative z-10 pb-24 md:pb-12">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-8">
-          
+
           {/* 1. Logo & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
-            <Logo className="h-6" showIcon={true} />
+            <Link to="/">
+              <Logo className="h-6" showIcon={true} />
+            </Link>
             <p className="text-gray-500 text-xs tracking-wide mt-2">
               © {new Date().getFullYear()} Nexel Systems s.r.o.
             </p>
@@ -38,33 +42,30 @@ export const Footer: React.FC = () => {
           {/* 2. Navigation */}
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10">
             <a
-              href="#sluzby"
-              onClick={(e) => handleNavClick(e, "sluzby")}
+              href="/#sluzby"
+              onClick={(e) => handleAnchorClick(e, "sluzby")}
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
               Naše riešenia
             </a>
-            <a
-              href="#o-nas"
-              onClick={(e) => handleNavClick(e, "o-nas")}
+            <Link
+              to="/o-nas"
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
               O nás
-            </a>
-            <a
-              href="#projekty"
-              onClick={(e) => handleNavClick(e, "projekty")}
+            </Link>
+            <Link
+              to="/referencie"
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
               Projekty
-            </a>
-            <a
-              href="#kontakt"
-              onClick={(e) => handleNavClick(e, "kontakt")}
+            </Link>
+            <Link
+              to="/kontakt"
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
               Kontakt
-            </a>
+            </Link>
           </div>
 
           {/* 3. Socials & Back to Top */}
