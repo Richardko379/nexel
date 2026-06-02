@@ -197,35 +197,6 @@ const projects = [
     }
   },
   {
-    id: 12,
-    title: "Digitálna infraštruktúra škôl",
-    category: "Dátové siete",
-    type: "data",
-    location: "Slovensko",
-    year: "2025",
-    image: "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573485/IMG_6945_jeudx7.jpg",
-    description: "Komplexná modernizácia digitálnej infraštruktúry pre školské zariadenia (projekt DIGINET). Vybudovanie rýchlej a bezpečnej siete pre moderné vzdelávanie.",
-    tags: ["Školstvo", "Optika", "DIGINET"],
-    details: {
-      about: "Kompletná realizácia dátovej infraštruktúry pre základné a stredné školy. Projekt zahŕňal návrh a inštaláciu štruktúrovanej kabeláže (Cat6A), montáž centrálnych rackových rozvádzačov, optických trás a WiFi prístupových bodov pre plné pokrytie objektu. Výsledkom je stabilná a škálovateľná sieťová infraštruktúra pripravená na moderné vyučovanie.",
-      scope: [
-        "Inštalácia optických trás",
-        "Štruktúrovaná kabeláž Cat.6A",
-        "Dodávka a montáž dátových rozvádzačov",
-        "Inštalácia WiFi prístupových bodov",
-        "Inštalácia dátových zásuviek"
-      ],
-      gallery: [
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573479/IMG_6531_fae80o.jpg",
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573480/IMG_6684_k9zlu5.jpg",
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573482/IMG_6746_fymeuj.jpg",
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573481/IMG_6716_zoicvz.jpg",
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573474/24650b77-e76d-4f07-819a-569c1879a8bc_zou6kf.jpg",
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573476/IMG_6326_vh8eh3.jpg"
-      ]
-    }
-  },
-  {
     id: 13,
     title: "SD-WAN infraštruktúra",
     category: "Dátové siete",
