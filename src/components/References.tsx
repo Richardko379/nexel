@@ -218,8 +218,7 @@ const projects = [
         "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770580086/IMG_5854_gr5jxa.jpg",
         "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770580088/IMG_5527_sgcgmb.jpg",
         "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770580083/IMG_6531_fmoetf.jpg",
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573475/IMG_6317_twywwh.jpg",
-        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573476/IMG_6326_vh8eh3.jpg"
+        "https://res.cloudinary.com/duvaxlkw3/image/upload/f_auto,q_auto/v1770573475/IMG_6317_twywwh.jpg"
       ]
     }
   },
