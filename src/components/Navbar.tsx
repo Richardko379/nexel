@@ -1,21 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
+import { alternatePath, homeAnchor, useLang, type Lang } from '../i18n';
 
-const navLinks = [
-  { label: 'Naše riešenia', href: '#sluzby', pageHref: '/#sluzby' },
-  { label: 'O nás', href: '#o-nas', pageHref: '/o-nas' },
-  { label: 'Projekty', href: '#projekty', pageHref: '/referencie' },
-  { label: 'Kontakt', href: '#kontakt', pageHref: '/kontakt' },
-];
+const LANGS: Lang[] = ['sk', 'de'];
+
+const LanguageSwitcher: React.FC = () => {
+  const { lang, t } = useLang();
+  const { pathname } = useLocation();
+
+  return (
+    <div
+      role="group"
+      aria-label={t.nav.switchLanguage}
+      className="relative flex items-center p-0.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
+    >
+      <span
+        aria-hidden="true"
+        className={`absolute top-0.5 bottom-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-nexel-primary shadow-[0_0_14px_rgba(6,182,212,0.55)] transition-transform duration-300 ease-out ${
+          lang === 'de' ? 'translate-x-full' : 'translate-x-0'
+        }`}
+      />
+      {LANGS.map((l) => (
+        <Link
+          key={l}
+          to={alternatePath(pathname, l)}
+          hrefLang={l}
+          lang={l}
+          aria-current={l === lang ? 'true' : undefined}
+          className={`relative z-10 w-10 md:w-11 py-1.5 text-center text-[11px] md:text-xs font-semibold tracking-[0.15em] transition-colors duration-300 ${
+            l === lang ? 'text-white' : 'text-gray-400 hover:text-white'
+          }`}
+        >
+          {l.toUpperCase()}
+        </Link>
+      ))}
+    </div>
+  );
+};
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const { lang, t, routes } = useLang();
+  const isHomePage = location.pathname === routes.home;
+
+  const navLinks = [
+    { label: t.nav.services, pageHref: homeAnchor(lang, 'sluzby'), sectionId: 'sluzby' },
+    { label: t.nav.about, pageHref: routes.about },
+    { label: t.nav.projects, pageHref: routes.references },
+    { label: t.nav.contact, pageHref: routes.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,17 +80,16 @@ export const Navbar: React.FC = () => {
     }
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof navLinks[0]) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: (typeof navLinks)[number]) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
 
-    // Ak pageHref je anchor na homepage (napr. /#sluzby), scrolluj
-    if (link.pageHref.startsWith('/#')) {
-      const sectionId = link.pageHref.replace('/#', '');
+    if (link.sectionId) {
+      const { sectionId } = link;
       if (isHomePage) {
         scrollToSection(sectionId);
       } else {
-        navigate('/');
+        navigate(routes.home);
         setTimeout(() => scrollToSection(sectionId), 300);
       }
     } else {
@@ -66,7 +103,7 @@ export const Navbar: React.FC = () => {
     if (isHomePage) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      navigate('/');
+      navigate(routes.home);
     }
     setIsMobileMenuOpen(false);
   };
@@ -85,7 +122,7 @@ export const Navbar: React.FC = () => {
             
             {/* Logo */}
             <a 
-              href="/" 
+              href={routes.home}
               onClick={handleLogoClick}
               className="relative z-50 hover:opacity-90 transition-opacity"
             >
@@ -107,16 +144,20 @@ export const Navbar: React.FC = () => {
                   </a>
                 ))}
               </div>
+              <LanguageSwitcher />
             </div>
 
-            {/* Mobile Menu Toggle */}
-            <button 
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden z-50 p-2 text-white hover:text-nexel-primary transition-colors focus:outline-none active:scale-95 transform"
-              aria-label="Open Menu"
-            >
-              <Menu size={28} />
-            </button>
+            {/* Mobile: language + menu toggle */}
+            <div className="md:hidden flex items-center gap-2 z-50">
+              <LanguageSwitcher />
+              <button 
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="p-2 text-white hover:text-nexel-primary transition-colors focus:outline-none active:scale-95 transform"
+                aria-label={t.nav.openMenu}
+              >
+                <Menu size={28} />
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -132,7 +173,7 @@ export const Navbar: React.FC = () => {
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-2 text-gray-400 hover:text-white transition-colors rounded-full bg-white/5 border border-white/10"
-                aria-label="Close Menu"
+                aria-label={t.nav.closeMenu}
               >
                 <X size={24} />
               </button>

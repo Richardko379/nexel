@@ -1,16 +1,20 @@
 import { Contact } from '../components/Contact';
-import { SEO, LOCAL_BUSINESS_SCHEMA } from '../components/SEO';
+import { SEO } from '../components/SEO';
+import { localBusinessSchema } from '../data/schema';
+import { useLang } from '../i18n';
 
-export const KontaktPage: React.FC = () => (
+export const KontaktPage: React.FC = () => {
+  const { lang, t } = useLang();
+  return (
   <>
     <SEO
-      title="Kontakt | Nexel Systems"
-      description="Kontaktujte Nexel Systems. Zavolajte nám na +421 952 205 797 alebo napíšte na info@nxl.sk. Radi vám poradíme s elektroinštaláciami, dátovými sieťami a zabezpečením."
-      canonical="/kontakt"
-      jsonLd={LOCAL_BUSINESS_SCHEMA}
+      title={t.seo.contact.title}
+      description={t.seo.contact.description}
+      jsonLd={localBusinessSchema(lang)}
     />
     <main className="pt-20">
       <Contact />
     </main>
   </>
-);
+  );
+};

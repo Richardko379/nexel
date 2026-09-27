@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { SERVICES } from '../data/services';
+import { servicePath, useLang } from '../i18n';
 
 export const Services: React.FC = () => {
+  const { lang, t } = useLang();
   const scrollToContact = () => {
     const contactSection = document.getElementById('kontakt');
     if (contactSection) {
@@ -24,21 +26,23 @@ export const Services: React.FC = () => {
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-[2px] w-6 md:w-8 bg-nexel-primary"></div>
             <span className="text-nexel-primary text-xs font-bold tracking-[0.2em] uppercase">
-              Naše riešenia
+              {t.services.label}
             </span>
             <div className="h-[2px] w-6 md:w-8 bg-nexel-primary"></div>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
-            Technológie, ktoré tvoria <br className="hidden md:block"/> váš priestor
+            {t.services.titleLine1} <br className="hidden md:block"/> {t.services.titleLine2}
           </h2>
           <p className="text-gray-400 text-sm md:text-base lg:text-lg leading-relaxed px-2">
-            Každá z našich služieb je vykonávaná s dôrazom na detail a dlhodobú funkčnosť.
+            {t.services.intro}
           </p>
         </div>
 
         {/* Services List - Gap optimized for tablet (md:gap-16) vs desktop (lg:gap-32) */}
         <div className="flex flex-col gap-16 md:gap-20 lg:gap-32">
-          {SERVICES.map((service, index) => (
+          {SERVICES.map((service, index) => {
+            const text = service[lang];
+            return (
             <div 
               key={service.id} 
               className={`flex flex-col lg:flex-row items-center gap-8 md:gap-10 lg:gap-20 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
@@ -49,7 +53,7 @@ export const Services: React.FC = () => {
                 <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-video bg-[#0A0E17]">
                   <img 
                     src={service.image} 
-                    alt={service.title} 
+                    alt={text.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.style.opacity = '0.5';
@@ -68,23 +72,23 @@ export const Services: React.FC = () => {
               <div className="w-full lg:w-1/2 px-2 md:px-4 lg:px-0">
                 <div className="mb-6">
                   <span className="text-nexel-primary font-medium tracking-wide uppercase text-xs md:text-sm mb-2 block">
-                    {service.subtitle}
+                    {text.subtitle}
                   </span>
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
-                    {service.title}
+                    {text.title}
                   </h3>
                   
                   {/* Description */}
                   <div className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed space-y-4">
-                    {service.description.split('\n\n').map((paragraph, i) => (
-                      <p key={i}>{paragraph}</p>
+                    {text.description.split('\n\n').map((paragraph, i) => (
+                      <p key={i}>{paragraph.trim()}</p>
                     ))}
                   </div>
                 </div>
 
                 {/* Feature List */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {service.features.map((feature, idx) => (
+                  {text.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
                       <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-white/5 flex items-center justify-center text-nexel-primary mt-0.5">
                         <CheckCircle2 size={12} className="md:w-3.5 md:h-3.5" />
@@ -100,20 +104,21 @@ export const Services: React.FC = () => {
                     onClick={scrollToContact}
                     className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-nexel-primary/50 rounded-lg text-white font-medium transition-all duration-300 active:scale-95 touch-manipulation"
                   >
-                    <span>Konzultovať riešenie</span>
+                    <span>{t.services.consult}</span>
                     <ArrowRight size={18} className="text-nexel-primary group-hover:translate-x-1 transition-transform" />
                   </button>
                   <Link
-                    to={`/sluzby/${service.slug}`}
+                    to={servicePath(lang, service.slug[lang])}
                     className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-6 py-3.5 border border-nexel-primary/30 hover:border-nexel-primary/70 rounded-lg text-nexel-primary hover:text-white font-medium transition-all duration-300 text-sm"
                   >
-                    Viac informácií
+                    {t.services.more}
                   </Link>
                 </div>
               </div>
 
             </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

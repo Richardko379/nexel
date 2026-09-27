@@ -1,38 +1,41 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
-import { SERVICES } from '../data/services';
-import { SEO, LOCAL_BUSINESS_SCHEMA } from '../components/SEO';
+import { SERVICES, findServiceBySlug, type Service } from '../data/services';
+import { SEO } from '../components/SEO';
+import { localBusinessSchema } from '../data/schema';
 import { Contact } from '../components/Contact';
+import { servicePath, SITE_URL, useLang, type Lang } from '../i18n';
 
-const SERVICE_SCHEMA = (service: (typeof SERVICES)[number]) => ({
+const serviceSchema = (service: Service, lang: Lang) => ({
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: service.title,
-  description: service.description.split('\n\n')[0].trim(),
+  name: service[lang].title,
+  description: service[lang].description.split('\n\n')[0].trim(),
   provider: {
     '@type': 'LocalBusiness',
     name: 'Nexel Systems s.r.o.',
   },
-  serviceType: service.subtitle,
-  url: `https://nxl.sk/sluzby/${service.slug}`,
+  serviceType: service[lang].subtitle,
+  url: `${SITE_URL}${servicePath(lang, service.slug[lang])}`,
 });
 
 export const ServiceDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const service = SERVICES.find((s) => s.slug === slug);
+  const { lang, t, routes } = useLang();
+  const service = findServiceBySlug(lang, slug);
 
-  if (!service) return <Navigate to="/" replace />;
+  if (!service) return <Navigate to={routes.home} replace />;
 
   const Icon = service.icon;
-  const otherServices = SERVICES.filter((s) => s.slug !== slug);
+  const text = service[lang];
+  const otherServices = SERVICES.filter((s) => s.id !== service.id);
 
   return (
     <>
       <SEO
-        title={service.metaTitle}
-        description={service.metaDescription}
-        canonical={`/sluzby/${service.slug}`}
-        jsonLd={[LOCAL_BUSINESS_SCHEMA, SERVICE_SCHEMA(service)]}
+        title={text.metaTitle}
+        description={text.metaDescription}
+        jsonLd={[localBusinessSchema(lang), serviceSchema(service, lang)]}
       />
 
       <main>
@@ -44,11 +47,11 @@ export const ServiceDetailPage: React.FC = () => {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <Link
-              to="/"
+              to={routes.home}
               className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-8 transition-colors group"
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-              Späť na úvodnú stránku
+              {t.serviceDetail.back}
             </Link>
 
             <div className="flex items-center gap-4 mb-6">
@@ -56,15 +59,15 @@ export const ServiceDetailPage: React.FC = () => {
                 <Icon size={28} strokeWidth={1.5} />
               </div>
               <span className="text-nexel-primary text-sm font-medium tracking-widest uppercase">
-                {service.subtitle}
+                {text.subtitle}
               </span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              {service.title}
+              {text.title}
             </h1>
             <p className="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed">
-              {service.metaDescription}
+              {text.metaDescription}
             </p>
           </div>
         </section>
@@ -76,7 +79,7 @@ export const ServiceDetailPage: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-video">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={text.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#05070B]/50 to-transparent" />
@@ -84,13 +87,13 @@ export const ServiceDetailPage: React.FC = () => {
 
               <div>
                 <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-5 mb-8">
-                  {service.description.split('\n\n').map((p, i) => (
+                  {text.description.split('\n\n').map((p, i) => (
                     <p key={i}>{p.trim()}</p>
                   ))}
                 </div>
 
                 <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, i) => (
+                  {text.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center text-nexel-primary flex-shrink-0">
                         <CheckCircle2 size={14} />
@@ -108,7 +111,7 @@ export const ServiceDetailPage: React.FC = () => {
                   }}
                   className="inline-flex items-center gap-3 px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-nexel-primary/50 rounded-lg text-white font-medium transition-all duration-300 group"
                 >
-                  <span>Nezáväzná konzultácia</span>
+                  <span>{t.serviceDetail.consult}</span>
                   <ArrowRight size={18} className="text-nexel-primary group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
@@ -116,14 +119,14 @@ export const ServiceDetailPage: React.FC = () => {
 
             {/* Ďalšie služby */}
             <div>
-              <h2 className="text-2xl font-bold text-white mb-8">Ďalšie naše služby</h2>
+              <h2 className="text-2xl font-bold text-white mb-8">{t.serviceDetail.otherServices}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {otherServices.map((s) => {
                   const OtherIcon = s.icon;
                   return (
                     <Link
-                      key={s.slug}
-                      to={`/sluzby/${s.slug}`}
+                      key={s.id}
+                      to={servicePath(lang, s.slug[lang])}
                       className="flex items-start gap-4 p-6 bg-white/5 border border-white/10 rounded-xl hover:border-nexel-primary/40 hover:bg-white/8 transition-all group"
                     >
                       <div className="w-12 h-12 bg-[#0A0E17] border border-white/10 rounded-lg flex items-center justify-center text-nexel-primary flex-shrink-0">
@@ -131,13 +134,13 @@ export const ServiceDetailPage: React.FC = () => {
                       </div>
                       <div>
                         <p className="text-xs text-nexel-primary uppercase tracking-wide mb-1">
-                          {s.subtitle}
+                          {s[lang].subtitle}
                         </p>
                         <h3 className="text-white font-semibold group-hover:text-nexel-primary transition-colors">
-                          {s.title}
+                          {s[lang].title}
                         </h3>
                         <p className="text-gray-400 text-sm mt-1 line-clamp-2">
-                          {s.metaDescription}
+                          {s[lang].metaDescription}
                         </p>
                       </div>
                     </Link>

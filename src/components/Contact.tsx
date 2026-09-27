@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Mail, Phone, Send, CheckCircle2, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
+import { useLang } from '../i18n';
 
 // KONFIGURÁCIA EMAILU
 const CONTACT_EMAIL = "info@nxl.sk"; 
 
 export const Contact: React.FC = () => {
+  const { t } = useLang();
   const [formState, setFormState] = useState({ email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -27,7 +29,7 @@ export const Contact: React.FC = () => {
             message: formState.message,
             
             // Konfigurácia FormSubmit
-            _subject: "Nová správa z webu Nexel Systems", // Predmet emailu
+            _subject: t.contact.emailSubject, // Predmet emailu
             _template: "table", // Pekná tabuľka v emaile
             _captcha: "false" // Vypnutá captcha pre jednoduchšie odoslanie
         })
@@ -58,10 +60,10 @@ export const Contact: React.FC = () => {
           
           {/* Contact Info */}
           <div className="order-1 lg:order-1">
-            <h2 className="text-nexel-accent font-medium tracking-widest uppercase mb-2 text-xs md:text-base">Kontaktujte nás</h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 md:mb-8">Začnime váš projekt</h3>
+            <h2 className="text-nexel-accent font-medium tracking-widest uppercase mb-2 text-xs md:text-base">{t.contact.label}</h2>
+            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 md:mb-8">{t.contact.title}</h3>
             <p className="text-gray-300 mb-8 md:mb-12 text-sm md:text-lg leading-relaxed">
-              Máte otázky? Neváhajte nás kontaktovať.
+              {t.contact.intro}
             </p>
 
             <div className="space-y-4 md:space-y-8">
@@ -70,7 +72,7 @@ export const Contact: React.FC = () => {
                   <Phone size={20} className="md:w-6 md:h-6" />
                 </div>
                 <div>
-                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wide mb-0.5 md:mb-1">Zavolajte nám</p>
+                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wide mb-0.5 md:mb-1">{t.contact.call}</p>
                   <span className="text-lg md:text-xl text-white font-medium group-hover:text-nexel-accent transition-colors">+421 952 205 797</span>
                 </div>
               </a>
@@ -80,7 +82,7 @@ export const Contact: React.FC = () => {
                   <Mail size={20} className="md:w-6 md:h-6" />
                 </div>
                 <div>
-                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wide mb-0.5 md:mb-1">Napíšte nám</p>
+                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wide mb-0.5 md:mb-1">{t.contact.write}</p>
                   <span className="text-lg md:text-xl text-white font-medium group-hover:text-nexel-accent transition-colors block break-all">{CONTACT_EMAIL}</span>
                 </div>
               </a>
@@ -93,7 +95,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wide mb-0.5 md:mb-1">WhatsApp</p>
-                  <span className="text-lg md:text-xl text-white font-medium group-hover:text-[#25D366] transition-colors">Napísať správu</span>
+                  <span className="text-lg md:text-xl text-white font-medium group-hover:text-[#25D366] transition-colors">{t.contact.whatsappCta}</span>
                 </div>
               </a>
             </div>
@@ -108,15 +110,15 @@ export const Contact: React.FC = () => {
                 <div className="w-16 h-16 md:w-20 md:h-20 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 mb-6 border border-green-500/20 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
                   <CheckCircle2 size={32} className="md:w-10 md:h-10" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Správa odoslaná!</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{t.contact.successTitle}</h3>
                 <p className="text-gray-400 mb-8 max-w-sm text-base md:text-lg">
-                  Ďakujeme za váš záujem. Náš tím prijme vašu požiadavku a ozveme sa vám čo najskôr.
+                  {t.contact.successText}
                 </p>
                 <button 
                   onClick={resetForm}
                   className="px-6 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 hover:border-nexel-primary/50 transition-all flex items-center gap-2 group"
                 >
-                  Odoslať ďalšiu správu
+                  {t.contact.sendAnother}
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -128,16 +130,16 @@ export const Contact: React.FC = () => {
                     <div className="w-16 h-16 md:w-20 md:h-20 bg-red-500/10 rounded-full flex items-center justify-center text-red-500 mb-6 border border-red-500/20 shadow-[0_0_30px_rgba(239,68,68,0.2)]">
                         <AlertCircle size={32} className="md:w-10 md:h-10" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Vyskytla sa chyba</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">{t.contact.errorTitle}</h3>
                     <p className="text-gray-400 mb-8 max-w-xs text-sm">
-                        Správu sa nepodarilo odoslať. Skontrolujte svoje internetové pripojenie a skúste to znova.
+                        {t.contact.errorText}
                     </p>
                     
                     <button 
                         onClick={resetForm}
                         className="w-full max-w-xs px-6 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 hover:border-white/30 transition-all"
                     >
-                        Skúsiť znova
+                        {t.contact.retry}
                     </button>
                 </div>
             )}
@@ -146,13 +148,13 @@ export const Contact: React.FC = () => {
             <form onSubmit={handleSubmit} className={`p-6 md:p-10 flex flex-col h-full transition-opacity duration-300 ${status !== 'idle' ? 'opacity-0 pointer-events-none absolute inset-0' : 'opacity-100'}`}>
                 <div className="space-y-5 md:space-y-6 flex-grow">
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm text-gray-300 font-medium tracking-wide">Email</label>
+                    <label htmlFor="email" className="text-sm text-gray-300 font-medium tracking-wide">{t.contact.emailLabel}</label>
                     <input 
                       type="email" 
                       id="email"
                       name="email"
                       className="w-full bg-[#05070B] border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-nexel-primary focus:ring-1 focus:ring-nexel-primary transition-all hover:border-white/20 text-base appearance-none"
-                      placeholder="vas@email.com"
+                      placeholder={t.contact.emailPlaceholder}
                       value={formState.email}
                       onChange={(e) => setFormState({...formState, email: e.target.value})}
                       required
@@ -161,13 +163,13 @@ export const Contact: React.FC = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm text-gray-300 font-medium tracking-wide">Správa</label>
+                    <label htmlFor="message" className="text-sm text-gray-300 font-medium tracking-wide">{t.contact.messageLabel}</label>
                     <textarea 
                       id="message"
                       name="message"
                       rows={4}
                       className="w-full bg-[#05070B] border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-nexel-primary focus:ring-1 focus:ring-nexel-primary transition-all resize-none hover:border-white/20 text-base appearance-none"
-                      placeholder="Stručne opíšte váš projekt..."
+                      placeholder={t.contact.messagePlaceholder}
                       value={formState.message}
                       onChange={(e) => setFormState({...formState, message: e.target.value})}
                       required
@@ -182,7 +184,7 @@ export const Contact: React.FC = () => {
                     className="w-full bg-gradient-to-r from-nexel-primary to-nexel-secondary text-white font-bold py-4 rounded-lg hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none touch-manipulation"
                     disabled={status === 'submitting'}
                   >
-                        {status === 'submitting' ? 'Odosielam...' : 'Odoslať správu'}
+                        {status === 'submitting' ? t.contact.submitting : t.contact.submit}
                         {status !== 'submitting' && <Send size={20} />}
                   </button>
                 </div>
@@ -192,7 +194,7 @@ export const Contact: React.FC = () => {
               {status === 'submitting' && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-nexel-surface z-20">
                       <Loader2 size={48} className="text-nexel-primary animate-spin mb-4" />
-                      <p className="text-gray-400">Odosielam správu...</p>
+                      <p className="text-gray-400">{t.contact.sendingOverlay}</p>
                   </div>
               )}
           </div>

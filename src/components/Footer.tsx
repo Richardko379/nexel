@@ -2,10 +2,12 @@ import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { Facebook, Instagram, ArrowUp } from "lucide-react";
+import { homeAnchor, useLang } from "../i18n";
 
 export const Footer: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { lang, t, routes } = useLang();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -13,14 +15,14 @@ export const Footer: React.FC = () => {
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    if (location.pathname === "/") {
+    if (location.pathname === routes.home) {
       const element = document.getElementById(id);
       if (element) {
         const offsetPosition = element.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       }
     } else {
-      navigate(`/#${id}`);
+      navigate(homeAnchor(lang, id));
     }
   };
 
@@ -31,7 +33,7 @@ export const Footer: React.FC = () => {
 
           {/* 1. Logo & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
-            <Link to="/">
+            <Link to={routes.home}>
               <Logo className="h-6" showIcon={true} />
             </Link>
             <p className="text-gray-500 text-xs tracking-wide mt-2">
@@ -42,29 +44,29 @@ export const Footer: React.FC = () => {
           {/* 2. Navigation */}
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10">
             <a
-              href="/#sluzby"
+              href={homeAnchor(lang, "sluzby")}
               onClick={(e) => handleAnchorClick(e, "sluzby")}
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
-              Naše riešenia
+              {t.nav.services}
             </a>
             <Link
-              to="/o-nas"
+              to={routes.about}
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
-              O nás
+              {t.nav.about}
             </Link>
             <Link
-              to="/referencie"
+              to={routes.references}
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
-              Projekty
+              {t.nav.projects}
             </Link>
             <Link
-              to="/kontakt"
+              to={routes.contact}
               className="text-gray-400 hover:text-nexel-primary text-sm font-medium transition-colors py-2 md:py-0"
             >
-              Kontakt
+              {t.nav.contact}
             </Link>
           </div>
 
@@ -97,7 +99,7 @@ export const Footer: React.FC = () => {
             <button
               onClick={scrollToTop}
               className="w-10 h-10 md:w-8 md:h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-nexel-primary transition-colors border border-white/5"
-              aria-label="Späť hore"
+              aria-label={t.footer.backToTop}
             >
               <ArrowUp size={18} className="md:w-4" />
             </button>

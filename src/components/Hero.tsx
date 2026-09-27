@@ -1,6 +1,8 @@
 import React from 'react';
+import { useLang } from '../i18n';
 
 export const Hero: React.FC = () => {
+  const { t } = useLang();
   const scrollToContact = () => {
     const contactSection = document.getElementById('kontakt');
     if (contactSection) {
@@ -70,12 +72,12 @@ export const Hero: React.FC = () => {
           
           {/* Main Headline - Responsive Text Sizes */}
           <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/60 leading-[1.2] md:leading-tight px-2">
-            Infraštruktúra pre <br className="block"/> moderné budovy
+            {t.hero.titleLine1} <br className="block"/> {t.hero.titleLine2}
           </h1>
           
           {/* Subheadline */}
           <p className="text-gray-300 text-sm md:text-lg lg:text-xl font-light max-w-2xl mx-auto leading-relaxed antialiased px-4">
-            Realizujeme elektroinštalácie, dátové siete a smart riešenia pre firmy aj domácnosti.
+            {t.hero.subtitle}
           </p>
 
           {/* Buttons - Stacked on Mobile, Row on Tablet+ */}
@@ -84,14 +86,14 @@ export const Hero: React.FC = () => {
               onClick={scrollToContact}
               className={buttonStyle}
             >
-              Začať projekt
+              {t.hero.ctaStart}
             </button>
             
             <button 
               onClick={scrollToProjects}
               className={buttonStyle}
             >
-              Naše referencie
+              {t.hero.ctaReferences}
             </button>
           </div>
         </div>

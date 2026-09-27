@@ -1,18 +1,22 @@
 import { References } from '../components/References';
 import { Contact } from '../components/Contact';
-import { SEO, LOCAL_BUSINESS_SCHEMA } from '../components/SEO';
+import { SEO } from '../components/SEO';
+import { localBusinessSchema } from '../data/schema';
+import { useLang } from '../i18n';
 
-export const ReferenciaPage: React.FC = () => (
+export const ReferenciaPage: React.FC = () => {
+  const { lang, t } = useLang();
+  return (
   <>
     <SEO
-      title="Referencie | Nexel Systems"
-      description="Pozrite si realizované projekty Nexel Systems – elektroinštalácie bytov a hotelových komplexov, dátové siete a zabezpečovacie systémy na Slovensku aj v zahraničí."
-      canonical="/referencie"
-      jsonLd={LOCAL_BUSINESS_SCHEMA}
+      title={t.seo.references.title}
+      description={t.seo.references.description}
+      jsonLd={localBusinessSchema(lang)}
     />
     <main className="pt-20">
       <References />
       <Contact />
     </main>
   </>
-);
+  );
+};
