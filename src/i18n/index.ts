@@ -4,7 +4,7 @@ import { translations, type Lang } from './translations';
 
 export type { Lang };
 
-export const SITE_URL = 'https://nxl.sk';
+export const SITE_URL = 'https://www.nxl.sk';
 
 export const ROUTES = {
   sk: { home: '/', about: '/o-nas', references: '/referencie', contact: '/kontakt', services: '/sluzby' },

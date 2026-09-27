@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://nxl.sk/</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/"/>
+    <loc>https://www.nxl.sk/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/de</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/"/>
+    <loc>https://www.nxl.sk/de</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/sluzby/elektroinstalacia</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/sluzby/elektroinstalacia"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/leistungen/elektroinstallation"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/sluzby/elektroinstalacia"/>
+    <loc>https://www.nxl.sk/sluzby/elektroinstalacia</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/sluzby/elektroinstalacia"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/leistungen/elektroinstallation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/sluzby/elektroinstalacia"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/de/leistungen/elektroinstallation</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/sluzby/elektroinstalacia"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/leistungen/elektroinstallation"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/sluzby/elektroinstalacia"/>
+    <loc>https://www.nxl.sk/de/leistungen/elektroinstallation</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/sluzby/elektroinstalacia"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/leistungen/elektroinstallation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/sluzby/elektroinstalacia"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/sluzby/datove-siete</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/sluzby/datove-siete"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/leistungen/datennetze"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/sluzby/datove-siete"/>
+    <loc>https://www.nxl.sk/sluzby/datove-siete</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/sluzby/datove-siete"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/leistungen/datennetze"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/sluzby/datove-siete"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/de/leistungen/datennetze</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/sluzby/datove-siete"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/leistungen/datennetze"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/sluzby/datove-siete"/>
+    <loc>https://www.nxl.sk/de/leistungen/datennetze</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/sluzby/datove-siete"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/leistungen/datennetze"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/sluzby/datove-siete"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/sluzby/zabezpecenie-smart</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/sluzby/zabezpecenie-smart"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/leistungen/sicherheit-smart"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/sluzby/zabezpecenie-smart"/>
+    <loc>https://www.nxl.sk/sluzby/zabezpecenie-smart</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/sluzby/zabezpecenie-smart"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/leistungen/sicherheit-smart"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/sluzby/zabezpecenie-smart"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/de/leistungen/sicherheit-smart</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/sluzby/zabezpecenie-smart"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/leistungen/sicherheit-smart"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/sluzby/zabezpecenie-smart"/>
+    <loc>https://www.nxl.sk/de/leistungen/sicherheit-smart</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/sluzby/zabezpecenie-smart"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/leistungen/sicherheit-smart"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/sluzby/zabezpecenie-smart"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/o-nas</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/o-nas"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/ueber-uns"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/o-nas"/>
+    <loc>https://www.nxl.sk/o-nas</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/o-nas"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/o-nas"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/de/ueber-uns</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/o-nas"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/ueber-uns"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/o-nas"/>
+    <loc>https://www.nxl.sk/de/ueber-uns</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/o-nas"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/o-nas"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/referencie</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/referencie"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/referenzen"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/referencie"/>
+    <loc>https://www.nxl.sk/referencie</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/referencie"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/referenzen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/referencie"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/de/referenzen</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/referencie"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/referenzen"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/referencie"/>
+    <loc>https://www.nxl.sk/de/referenzen</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/referencie"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/referenzen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/referencie"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/kontakt</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/kontakt"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/kontakt"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/kontakt"/>
+    <loc>https://www.nxl.sk/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/kontakt"/>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nxl.sk/de/kontakt</loc>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://nxl.sk/kontakt"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nxl.sk/de/kontakt"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nxl.sk/kontakt"/>
+    <loc>https://www.nxl.sk/de/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://www.nxl.sk/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nxl.sk/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nxl.sk/kontakt"/>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

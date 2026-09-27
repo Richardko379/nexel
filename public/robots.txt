@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nxl.sk/sitemap.xml
+Sitemap: https://www.nxl.sk/sitemap.xml
